@@ -1,6 +1,14 @@
-var main = require('./handlers/main.js');
+var main   = require('./handlers/main.js'),
+	api    = require('./handlers/api.js');
+
+var logger = require('./helpers/logger.js');
 
 module.exports = function(app){
 	// main routes
-	app.get('/', main.home);
+	app.get('/', logger.log, main.home);
+
+	// api middleware first
+	app.param('latlng', api.coordinateInformation);
+	// api routes
+	app.get('/api/heatmap/:latlng/:zoom/:searchterm', api.heatmap);
 };
