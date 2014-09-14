@@ -1,0 +1,28 @@
+{
+  "name": "APIVivval",
+  "version": "0.0.0",
+  "description": "An API for a mobile application",
+  "main": "APIVivval.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/narwhaldo/APIVivval"
+  },
+  "keywords": [
+    "Hyperlocal",
+    "Trending"
+  ],
+  "author": "Adam Schuld",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/narwhaldo/APIVivval/issues"
+  },
+  "homepage": "https://github.com/narwhaldo/APIVivval",
+  "dependencies": {
+    "express": "^4.9.0",
+    "express-handlebars": "^1.0.3",
+    "nodemon": "^1.2.1"
+  }
+}
