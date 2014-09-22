@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 
+// exports.saveBlaze = function(blazeObj){
+
+// }
+
 var blazeSchema = mongoose.Schema({
-  id: Number,
+  uid: Number,
   geolocation: {
     lat: Number,
     lng: Number

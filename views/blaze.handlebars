@@ -1,0 +1,36 @@
+<h1>This is a temporary blaze form</h1>
+<form id="blazeForm">
+  uid: <input type="text" name="uid" id="uid" placeholder="uid"><br>
+  lat: <input type="text" name="lat" id="lat" placeholder="latitude"><br>
+  lng: <input type="text" name="lng" id="lng" placeholder="longitude"><br>
+  text: <textarea rows="4" cols="50" name="text" id="text" placeholder="blaze here"></textarea><br>
+  bump1: <input type="text" name="bump1" id="bump1"placeholder="bump1"><br>
+  bump2: <input type="text" name="bump2" id="bump2" placeholder="bump2"><br> 
+  bump3: <input type="text" name="bump3" id="bump3"placeholder="bump3"><br> 
+  <input type="submit">
+</form>
+
+<script>
+  $(function(){
+    $("#blazeForm").submit(function(event){
+      event.preventDefault();
+      var blazeObj = {
+        uid: $("#uid").val(),
+        lat: $("#lat").val(),
+        lng: $("#lng").val(),
+        text: $("#text").val(),
+        bump1: $("#bump1").val(),
+        bump2: $("#bump2").val(),
+        bump3: $("#bump3").val()
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/blaze",
+        data: blazeObj
+      });
+
+    });
+
+  });
+</script>

@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
 var heatmapSchema = mongoose.Schema({
-  map_location: {
+  mapLocation: {
     lat: Number,
     lng: Number
   },
-  blazon_count: Number,
+  blazonCount: Number,
   zoom: Number,
-  search_term: String,
+  searchTerm: String,
   blazons: {}
 });
 

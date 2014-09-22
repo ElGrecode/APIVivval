@@ -22,11 +22,30 @@ var handlebars = require('express-handlebars').create({
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
-app.set('env', 'devlopment'); 
+app.set('env', 'development'); 
 // allow caching of unchanged templates
 app.enable('view cache');
 // disable express header information
 app.disable('x-powered-by');
+
+// Database
+var mongoose = require('mongoose');
+var options = {
+    server: {
+        socketOptions: { keepAlive: 1 }
+    }
+};
+switch(app.get('env')){
+    case 'development':
+        mongoose.connect('mongodb://localhost/APIVivval', options);
+        break;
+    case 'production':
+        // Would have to set up for production
+        // mongoose.connect(credentials.mongo.production.connectionsString, options);
+        break;
+    default:
+        throw new Error('Unknown execution environment: ' + app.get('env'));
+}
 
 // Potentially might want to set JSON settings
 // sends JSON back as callback
@@ -37,7 +56,9 @@ app.disable('x-powered-by');
 
 
 // *** Middleware
-// app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(express.static(__dirname + '/public'));
 
 // *** Routes

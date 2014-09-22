@@ -6,6 +6,8 @@ var logger = require('./helpers/logger.js');
 module.exports = function(app){
 	// main routes
 	app.get('/', logger.log, main.home);
+    app.get('/blaze', main.blaze);
+    app.post('/blaze', main.blazePost)
 
 	// api middleware first
 	app.param('latlng', api.coordinateInformation);
