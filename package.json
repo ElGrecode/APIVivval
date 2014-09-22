@@ -1,6 +1,7 @@
 {
   "name": "APIVivval",
-  "version": "0.0.0",
+  "subdomain": "vivval",
+  "version": "0.0.1",
   "description": "An API for a mobile application",
   "main": "APIVivval.js",
   "scripts": {
