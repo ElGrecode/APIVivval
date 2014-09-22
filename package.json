@@ -24,6 +24,7 @@
     "body-parser": "^1.8.1",
     "express": "^4.9.0",
     "express-handlebars": "^1.0.3",
+    "mongoose": "^3.8.16",
     "nodemon": "^1.2.1"
   },
   "devDependencies": {

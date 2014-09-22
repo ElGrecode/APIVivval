@@ -1,7 +1,11 @@
 var express     = require('express'),
 	bodyParser	= require('body-parser'), // Parses the body of our HTTP requests
 	app  		= express();
-	
+
+// Models
+var User        = require('./models/user.js'),
+    Blaze       = require('./models/blazon.js');
+    
 // Sets up Handlebars as template engine
 var handlebars = require('express-handlebars').create({
     defaultLayout:'main',
