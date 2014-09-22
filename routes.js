@@ -9,9 +9,9 @@ module.exports = function(app){
 
 	// api middleware first
 	app.param('latlng', api.coordinateInformation);
-    
+
 	// api routes
-	app.get('/api/heatmap/:api_key/:latlng/:zoom/:searchterm', api.heatmap);
+	app.get('/api/heatmap/:apiKey/:latlng/:zoom/:searchterm', api.heatmap);
     app.get('/api/blaze', api.blaze);
     app.post('/api/blaze', api.blazePost);
 };
