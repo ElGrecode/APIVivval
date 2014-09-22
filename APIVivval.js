@@ -40,20 +40,13 @@ switch(app.get('env')){
         mongoose.connect('mongodb://localhost/APIVivval', options);
         break;
     case 'production':
+        // todo: Set up for Deployment
         // Would have to set up for production
         // mongoose.connect(credentials.mongo.production.connectionsString, options);
         break;
     default:
         throw new Error('Unknown execution environment: ' + app.get('env'));
 }
-
-// Potentially might want to set JSON settings
-// sends JSON back as callback
-// app.set('jsonp callback name', 'cb');
-// replace certain values in json to protect information
-// app.set('json replacer', function(){})
-
-
 
 // *** Middleware
 app.use(bodyParser.urlencoded({

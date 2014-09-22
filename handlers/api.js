@@ -1,3 +1,5 @@
+var Blazon = require('../models/blazon.js');
+
 exports.coordinateInformation = function(req, res, next, name){
 	req.latlng = 'Lat and Lng manipulated by middleware first' + name;
 	next();
@@ -29,4 +31,33 @@ exports.heatmap = function(req, res){
 		searchterm: req.params.searchterm
 	});
 	
+};
+
+exports.blaze = function(req, res){
+  res.render('blaze');
+};
+
+exports.blazePost = function(req, res){
+  var uid = req.body.uid;
+  var geolocation = {lat: req.body.lat, lng: req.body.lng};
+  var text = req.body.text;
+  // var bumpString = req.body.bumps
+  
+
+  // Do some validations
+
+  // Create Blazon object
+  var blazeObj = new Blazon({
+    uid: uid,
+    geolocation: geolocation,
+    text: text,
+    kindles: 0
+  });
+  // Extract the bumps using the blazon model method
+  blazeObj.bumps = blazeObj.extractBumps(text);
+
+  // Save the Blazon
+  blazeObj.save();
+
+
 };

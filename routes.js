@@ -6,11 +6,12 @@ var logger = require('./helpers/logger.js');
 module.exports = function(app){
 	// main routes
 	app.get('/', logger.log, main.home);
-    app.get('/blaze', main.blaze);
-    app.post('/blaze', main.blazePost)
 
 	// api middleware first
 	app.param('latlng', api.coordinateInformation);
+    
 	// api routes
 	app.get('/api/heatmap/:api_key/:latlng/:zoom/:searchterm', api.heatmap);
+    app.get('/api/blaze', api.blaze);
+    app.post('/api/blaze', api.blazePost);
 };
