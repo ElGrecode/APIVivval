@@ -1,11 +1,12 @@
 {
   "name": "APIVivval",
   "subdomain": "vivval",
-  "version": "0.0.1",
+  "version": "0.0.1-3",
   "description": "An API for a mobile application",
   "main": "APIVivval.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node APIVivval.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +32,8 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "mocha": "^1.21.4"
+  },
+  "engines": {
+    "node": "0.10.29"
   }
 }
