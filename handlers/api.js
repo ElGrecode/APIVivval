@@ -1,10 +1,5 @@
 var Blazon = require('../models/blazon.js');
 
-exports.coordinateInformation = function(req, res, next, name){
-	req.latlng = 'Lat and Lng manipulated by middleware first' + name;
-	next();
-};
-
 exports.heatmap = function(req, res){
   if (req.params.apiKey == "jdfs8A3298Clkp62kH0uf29h29"){ 
     console.log('permission granted');
@@ -43,6 +38,7 @@ exports.heatmap = function(req, res){
 };
 
 exports.blaze = function(req, res){
+  console.log('blaze view');
   res.render('blaze');
 };
 

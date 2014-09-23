@@ -8,7 +8,7 @@ module.exports = function(app){
 	app.get('/', logger.log, main.home);
 
 	// api middleware first
-	app.param('latlng', api.coordinateInformation);
+	// app.param('latlng', api.coordinateInformation);
 
 	// api routes
 	app.get('/api/heatmap/:apiKey/:latlng/:zoom/:searchterm', api.heatmap);
