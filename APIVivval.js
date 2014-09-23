@@ -43,6 +43,7 @@ switch(app.get('env')){
         // todo: Set up for Deployment
         // Would have to set up for production
         // mongoose.connect(credentials.mongo.production.connectionsString, options);
+        mongoose.connect('mongodb://localhost/APIVivval', options);
         break;
     default:
         throw new Error('Unknown execution environment: ' + app.get('env'));

@@ -6,7 +6,7 @@
   "main": "APIVivval.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node APIVivval.js"
+    "start": "node ./APIVivval.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,6 @@
     "mocha": "^1.21.4"
   },
   "engines": {
-    "node": "0.10.29"
+    "node": "0.8.x"
   }
 }
