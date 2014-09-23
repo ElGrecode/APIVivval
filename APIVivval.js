@@ -37,7 +37,7 @@ var options = {
 };
 switch(app.get('env')){
     case 'development':
-        mongoose.connect('mongodb://localhost/APIVivval', options);
+        mongoose.connect('mongodb://nodejitsu:c3f8021dcac04b5e1191ee1bd711b9aa@troup.mongohq.com:10060/nodejitsudb1297755925', options);
         break;
     case 'production':
         // todo: Set up for Deployment
