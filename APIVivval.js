@@ -1,6 +1,8 @@
 var express     = require('express'),
 	bodyParser	= require('body-parser'), // Parses the body of our HTTP requests
-	app  		= express();
+	credentials = require('./credentials.js'),
+    app  		= express();
+    
 
 // Models
 var User        = require('./models/user.js'),
@@ -37,13 +39,13 @@ var options = {
 };
 switch(app.get('env')){
     case 'development':
-        mongoose.connect('mongodb://nodejitsu:c3f8021dcac04b5e1191ee1bd711b9aa@troup.mongohq.com:10060/nodejitsudb1297755925', options);
+        mongoose.connect(credentials.mongo.development.connectionString, options);
         break;
     case 'production':
         // todo: Set up for Deployment
         // Would have to set up for production
         // mongoose.connect(credentials.mongo.production.connectionsString, options);
-        mongoose.connect('mongodb://nodejitsu:c3f8021dcac04b5e1191ee1bd711b9aa@troup.mongohq.com:10060/nodejitsudb1297755925');
+        mongoose.connect(credentials.mongo.production.connectionString, options);
         break;
     default:
         throw new Error('Unknown execution environment: ' + app.get('env'));
