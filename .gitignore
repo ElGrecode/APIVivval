@@ -5,7 +5,8 @@ node_modules*
 .DS_Store
 
 # we don't want to accidentally check our secret credentials into the repo
-credentials.js
+# credentials.js 
+# This doesn't matter if we have a private repo
 
 # don't comit log files
 log
