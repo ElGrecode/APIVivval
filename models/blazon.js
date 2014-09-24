@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var blazonSchema = mongoose.Schema({
   uid: Number,
+  name: String,
   geolocation: {
     lat: Number,
     lng: Number

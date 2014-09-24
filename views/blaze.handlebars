@@ -1,6 +1,6 @@
 <h1>This is a temporary blaze form</h1>
 <form id="blazeForm">
-  uid: <input type="text" name="uid" id="uid" placeholder="uid"><br>
+  name: <input type="text" name="name" id="name" placeholder="Your Name"><br>
   lat: <input type="text" name="lat" id="lat" placeholder="latitude"><br>
   lng: <input type="text" name="lng" id="lng" placeholder="longitude"><br>
   text: <textarea rows="4" cols="50" name="text" id="text" placeholder="blaze here"></textarea><br>
@@ -11,25 +11,36 @@
   $(function(){
     $("#blazeForm").submit(function(event){
       event.preventDefault();
-      var uid = $("#uid");
+      // todo: hardcoded uid for now
+      var uid = 1 //$("#uid");
+      var name = $("#name");
       var lat = $("#lat");
       var lng = $("#lng");
       var text = $("#text");
 
       // Construct a blazeObj to be posted via Ajax
       var blazeObj = {
-        uid: uid.val(),
+        uid: uid,
+        name: name.val(),
         lat: lat.val(),
         lng: lng.val(),
         text: text.val()
       }
 
-      $.ajax({
-        type: "POST",
-        url: "/api/blaze",
-        data: blazeObj,
-      });
+      // todo: very weak front side validations
+      if (uid != undefined && name != undefined && lat != undefined &&
+        lng != undefined && text != undefined){
+        $.ajax({
+          type: "POST",
+          url: "/api/blaze",
+          data: blazeObj,
+        })
 
+        console.log("Will this work even asynch?!")
+        window.location.reload()
+      }
+
+      
     });
 
   });
