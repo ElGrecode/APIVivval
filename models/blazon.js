@@ -33,7 +33,8 @@ function bumpSubstrings(indices, text){
     bumps = [];
     for (i = 0; i < indices.length; i++){
         // Use indices to extract substrings from text
-        bumps.push(text.substring(indices[i][0], indices[i][1]));    
+        var extractedWord = text.substring(indices[i][0], indices[i][1]).toLowerCase();
+        bumps.push(extractedWord);    
     }
     return bumps;
 }
