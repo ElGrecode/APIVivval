@@ -1,43 +1,81 @@
-<h1>This is a temporary blaze form</h1>
-<form id="blazeForm">
-  name: <input type="text" name="name" id="name" placeholder="Your Name"><br>
-  lat: <input type="text" name="lat" id="lat" placeholder="latitude"><br>
-  lng: <input type="text" name="lng" id="lng" placeholder="longitude"><br>
-  text: <textarea rows="4" cols="50" name="text" id="text" placeholder="blaze here"></textarea><br>
-  <input type="submit">
-</form>
+<header>
+  <img src="../../img/vivvallogo.svg" alt="vivval logo">
+</header>
+
+
+
+<div class="mobileForm">
+  <div class="overlay">
+    <img src="../../img/iphone_vector.svg" alt="iphone outline">
+  </div>
+  <form id="blazeForm">
+    <input type="text" name="name" id="name" placeholder="Your Name"><br>
+    {{!-- <input type="text" name="lat" id="lat" placeholder="latitude"><br>
+    <input type="text" name="lng" id="lng" placeholder="longitude"><br> --}}
+    <textarea  maxlength="60" rows="4" cols="50" name="text" id="text" placeholder="^Blaze how sick Adam's ^presentation at ^GA is today" class="replyText"></textarea><br>
+    <input type="submit" value="">
+  </form>
+  <div class="letterCount"></div>
+</div>
 
 <script>
   $(function(){
+    // Text area character count 140
+    $('.replyText').on('keyup', function(e) {
+      var len = $(this).val().length;
+      var letterCount = $(this).closest('.mobileForm').find('.letterCount');
+      var remaining = 60 - len;
+      if (remaining < 10) {
+        letterCount.addClass('warning');
+      }
+      letterCount.html(remaining);
+    });
+
     $("#blazeForm").submit(function(event){
       event.preventDefault();
       // todo: hardcoded uid for now
       var uid = 1 //$("#uid");
       var name = $("#name");
-      var lat = $("#lat");
-      var lng = $("#lng");
+      var lat; //= $("#lat");
+      var lng; //= $("#lng");
       var text = $("#text");
+
+      // randomize lat and lng within .003
+      function randomizeGeo(){
+        var baseLat = 34.0117885;
+        var baseLng =  -118.4944107;
+
+        lat = baseLat + (Math.random() * 5000) / 1000000
+        lng = baseLng + (Math.random() * 5000) / 1000000
+
+      };
+
+      randomizeGeo();
 
       // Construct a blazeObj to be posted via Ajax
       var blazeObj = {
         uid: uid,
         name: name.val(),
-        lat: lat.val(),
-        lng: lng.val(),
+        lat: lat,
+        lng: lng,
         text: text.val()
       }
 
+      console.log(blazeObj);
+
       // todo: very weak front side validations
-      if (uid != undefined && name != undefined && lat != undefined &&
-        lng != undefined && text != undefined){
+      if (uid != undefined && name.val() != "" && lat != undefined &&
+        lng != undefined && text.val() != ""){
         $.ajax({
           type: "POST",
           url: "/api/blaze",
           data: blazeObj,
-        })
+        });
 
         console.log("Will this work even asynch?!")
         window.location.reload()
+      } else {
+        alert("invalid data, try again");
       }
 
       

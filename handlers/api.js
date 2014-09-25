@@ -35,7 +35,7 @@ exports.heatmap = function(req, res){
         for (var i = 0; i < blazons.length; i++){
           console.log(blazons[i].bumps);
           if (blazons[i].bumps.indexOf(searchTerm) >= 0){
-            filteredBlazons.push(blazons[i]);
+            filteredBlazons.push(blazon[i]);
           }
         }
 
